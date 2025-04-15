@@ -1,0 +1,239 @@
+---
+openapi: 3.0.2
+info:
+  title: API Cargas - 1.0
+  version: 1.0.0
+  description: API definition of Cargas
+  contact:
+    name: RCC-asdasdad
+    url: https://asddasdasd
+    email: manjusarathi@outlook.in
+paths:
+  /API/GetNewCustomers:
+    summary: Get list of new customers
+    post:
+      responses:
+        "200":
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Customers'
+              examples:
+                New Customers Example:
+                  value: '<Results>
+  <DataSet>
+    <Table>
+      <CustomerID>136470</CustomerID>
+    </Table>
+    <Table>
+      <CustomerID>136470</CustomerID>
+    </Table>
+  </DataSet>
+</Results>'
+                    
+          description: Changed Customers
+      operationId: GetNewCustomers
+      summary: Get New Customers
+  /API/GetCustomerAccount:
+    summary: Get list of customer accounts
+    post:
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/CustomerId'
+      responses:
+        "200":
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Accounts'
+              examples:
+                Customer Accounts Example:
+                  value: '<Results>
+  <DataSet>
+    <Table>
+      <CustomerID>311025</CustomerID>
+      <CustomerStatus>Active</CustomerStatus>
+      <CustomerType>Residence</CustomerType>
+      <EmailAddress>manjusarathi1@yopmail.com</EmailAddress>
+      <Address1>311025 addresss</Address1>
+      <Address2>A2</Address2>
+      <Address3>A3</Address3>
+      <City>Bangaluru</City>
+      <State>KARNATAKA</State>
+      <Zipcode>560060</Zipcode>
+      <ContactPerson></ContactPerson>
+      <PrimaryPhone>1364791456</PrimaryPhone>
+      <CustomerLastName>Sarathi 311025</CustomerLastName>
+      <CustomerFirstName>311025 Manju</CustomerFirstName>
+    </Table>
+  </DataSet>
+</Results>'
+                   
+          description: Changed
+      operationId: GetCustomerAccounts
+      summary: Get Customer Accounts
+  /API/GetCustomerLocations:
+    summary: Get customer locations
+    post:
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/CustomerId'
+      responses:
+        "200":
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Locations'
+              examples:
+                Customer Locations Example:
+                  value:
+                    '<Results>
+  <DataSet>
+    <Table>
+      <Name>Test Site1</Name>
+      <Address1>311025 address1</Address1>
+      <Address2>311025 Address2</Address2>
+      <Address3>A3</Address3>
+      <City>B 311025</City> 
+      <State>K 311025</State>
+      <Zipcode>560060</Zipcode>
+     <ContactPerson>Adam Brace</ContactPerson>
+      <Inactive>false</Inactive>
+      <LocationType></LocationType>
+      <PhoneNumber>(507) 227-4738</PhoneNumber>
+    </Table>
+    <Table>
+      <Name>Test Site 2</Name>
+      <Address1>311025 A1</Address1>
+      <Address2>311025 A2</Address2>
+      <Address3>311025 A3</Address3>
+      <City>B 311025</City>
+      <State>KA 311025</State>
+      <Zipcode>560060</Zipcode>
+      <ContactPerson>Dover User</ContactPerson>
+      <Inactive>false</Inactive>
+      <LocationType></LocationType>
+      <PhoneNumber>(507) 227-4738</PhoneNumber>
+    </Table>
+   
+  </DataSet>
+</Results>'
+          description: Changed
+      operationId: GetCustomerLocations
+      summary: Get Customer Locations
+components:
+  schemas:
+    CustomerId:
+      type: object
+      properties:
+        CustomerID:
+          type: string
+          description: Customer Id
+          example: 12312313
+    Customers:
+      title: Root Type for custoemrs
+      description: The root of the customers type's schema.
+      type: object
+      properties:
+        Results:
+          type: object
+          properties:
+            DataSet:
+              type: object
+              properties:
+                Table: 
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      CustomerID:
+                        type: string
+
+    Accounts:
+      title: Root Type for accounts
+      description: The root of the accounts type's schema.
+      type: object
+      properties:
+        Results:
+          type: object
+          properties:
+            DataSet:
+              type: object
+              properties:
+                Table: 
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      CustomerID:
+                        type: string
+                      CustomerStatus:
+                        type: string
+                      CustomerType:
+                        type: string                  
+                      EmailAddress:
+                        type: string
+                      Address1:
+                        type: string                  
+                      Address2:
+                        type: string                  
+                      Address3:
+                        type: string                  
+                      City:
+                        type: string                  
+                      State:
+                        type: string                    
+                      Zipcode:
+                        type: string
+                      ContactPerson:
+                        type: string
+                      PrimaryPhone:
+                        type: string
+                      CustomerLastName:
+                        type: string
+                      CustomerFirstName:
+                        type: string
+        
+    Locations:
+      title: Root Type for locations
+      description: The root of the locations type's schema.
+      type: object
+      properties:
+        Results:
+          type: object
+          properties: 
+            DataSet:
+              type: object
+              properties:
+                Table: 
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      Name:
+                        type: string
+                      Address1:
+                        type: string                  
+                      Address2:
+                        type: string                  
+                      Address3:
+                        type: string                  
+                      City:
+                        type: string                  
+                      State:
+                        type: string                    
+                      Zipcode:
+                        type: string
+                      ContactPerson:
+                        type: string
+                      Inactive:
+                        type: boolean
+                      LocationType:
+                        type: string                  
+                      PhoneNumber:
+                        type: string
+   
